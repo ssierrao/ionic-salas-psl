@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {MisSalasServiceProvider} from '../../providers/mis-salas-service/mis-salas-service';
 import {Sala} from '../../models/Salas';
-
+import { ImagePicker } from '@ionic-native/image-picker';
 /**
  * Generated class for the SalaDetallePage page.
  *
@@ -21,12 +21,12 @@ export class SalaDetallePage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              private misSalasService: MisSalasServiceProvider,) {
+              private misSalasService: MisSalasServiceProvider,
+              private imagePicker: ImagePicker) {
   }
 
   ionViewDidLoad() {
     this.salaNombre = this.navParams.data;
-    console.log(typeof this.salaNombre);
     if( typeof this.salaNombre === 'string'){
       this.misSalasService.getSalaDetalle(this.salaNombre).then((sala: Sala) => {
         this.sala = sala;
@@ -45,12 +45,10 @@ export class SalaDetallePage {
   }
 
   seleccionarImagen() {
-    /*this.imagePicker.getPictures({maximumImagesCount: 1}).then((results) => {
-      for (let i = 0; i < results.length; i++) {
-        this.sala.imagen = results[i];
+    this.imagePicker.getPictures({maximumImagesCount: 1}).then((results) => {
+      for (var i = 0; i < results.length; i++) {
+        this.sala.imagen =  results[i];
       }
-    }, (err) => {
-      console.log(err);
-    })*/
+    }, (err) => { });
   }
 }
