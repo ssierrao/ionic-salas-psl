@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>mis salas</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let sala of salas">
+      <h2>{{sala.nombre}}</h2>
+      <p>{{sala.asientos}}</p>
+      <button ion-button (click)="verDetalle(sala)" item-end>Ver</button>
+      <ion-icon color="danger" (click)="borrarSala(sala)" ios="ios-trash" md="md-trash" item-end></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-icon color="secondary" (click)="crearSala()" class="closeButton" ios="ios-add-circle" md="md-add-circle" item-end></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

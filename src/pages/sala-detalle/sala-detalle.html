@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title *ngIf="salaNombre">{{salaNombre}}</ion-title>
+    <ion-title *ngIf="!salaNombre">Crea tu sala</ion-title>
+
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="salaDetalle">
+  <ion-list *ngIf="sala">
+    <ion-item *ngIf="!salaNombre">
+      <ion-label color="primary" stacked>Nombre</ion-label>
+      <ion-input type="text" placeholder="Nombre de la sala" [(ngModel)]="sala.nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail>
+        <img src="{{sala.imagen}}" (click)="seleccionarImagen()">
+      </ion-thumbnail>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Asientos</ion-label>
+      <ion-input type="number" placeholder="Total de asientos" [(ngModel)]="sala.asientos"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Ultima Limpieza</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="sala.limpieza"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Ubicacion</ion-label>
+      <ion-input type="number" placeholder="Piso en PSL" [(ngModel)]="sala.ubicacion"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Ocupada</ion-label>
+      <ion-checkbox [(ngModel)]="sala.ocupada"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+    <button class="save" ion-button (click)="guardar()" item-end>Guardar Cambios</button>
+</ion-content>
