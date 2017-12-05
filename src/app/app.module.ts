@@ -10,6 +10,7 @@ import {MisSalasPage} from '../pages/mis-salas/mis-salas';
 import { MisSalasServiceProvider } from '../providers/mis-salas-service/mis-salas-service';
 import {HttpModule} from '@angular/http';
 import {SalaDetallePage} from '../pages/sala-detalle/sala-detalle';
+import { ImagePicker } from '@ionic-native/image-picker';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {SalaDetallePage} from '../pages/sala-detalle/sala-detalle';
   providers: [
     StatusBar,
     SplashScreen,
+    ImagePicker,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MisSalasServiceProvider
   ]
